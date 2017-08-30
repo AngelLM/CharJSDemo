@@ -31,7 +31,14 @@ window.onload = function() {
                       'hour': 'HH:mm',
                     },
                     }
-                }]
+                }],
+            yAxes: [{
+              display: true,
+              ticks: {
+                  //suggestedMin: 0,
+                  //beginAtZero: true
+              }
+          }]
               },
             title: {
                 display: true,
@@ -46,15 +53,17 @@ window.onload = function() {
     YoutubeViews = [];
     YoutubeViewsTime = [];
     YoutubeViewsArray = [];
-    fetch('youtube-daily.txt')
+    fetch('daily.txt')
       .then(yt => yt.text())
       .then(content => {
         let lines = content.split(/\n/);
         lines.forEach(function(line){
           let stats = line.split('-');
-          if (stats[0]=='Views'){
-            YoutubeViews.push(stats[1]);
-            YoutubeViewsTime.push(stats[2]);
+          if (stats[0]=='Youtube'){
+            if (stats[1]=='Views'){
+              YoutubeViews.push(stats[2]);
+              YoutubeViewsTime.push(stats[3]);
+            };
           };
         });
         for (var i = 0; i<YoutubeViews.length; i++){
@@ -101,15 +110,17 @@ document.getElementById('dailyData').addEventListener('click', function() {
   YoutubeViews = [];
   YoutubeViewsTime = [];
   YoutubeViewsArray = [];
-  fetch('youtube-daily.txt')
+  fetch('daily.txt')
     .then(yt => yt.text())
     .then(content => {
       let lines = content.split(/\n/);
       lines.forEach(function(line){
         let stats = line.split('-');
-        if (stats[0]=='Views'){
-          YoutubeViews.push(stats[1]);
-          YoutubeViewsTime.push(stats[2]);
+        if (stats[0]=='Youtube'){
+          if (stats[1]=='Views'){
+            YoutubeViews.push(stats[2]);
+            YoutubeViewsTime.push(stats[3]);
+          };
         };
       });
       for (var i = 0; i<YoutubeViews.length; i++){
@@ -162,8 +173,10 @@ document.getElementById('weeklyData').addEventListener('click', function() {
       lines.forEach(function(line){
         let stats = line.split('-');
         if (stats[0]=='Views'){
-          YoutubeViews.push(stats[1]);
-          YoutubeViewsTime.push(stats[2]);
+          if (stats[1]=='Views'){
+            YoutubeViews.push(stats[2]);
+            YoutubeViewsTime.push(stats[3]);
+          };
         };
       });
       for (var i = 0; i<YoutubeViews.length; i++){
