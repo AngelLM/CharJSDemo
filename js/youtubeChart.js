@@ -1,4 +1,3 @@
-
 var color = Chart.helpers.color;
 var YoutubeSubscriptors = [];
 var YoutubeSubscriptorsTime = [];
@@ -15,7 +14,6 @@ var YoutubeLikesArray = [];
 var YoutubeDislikes = [];
 var YoutubeDislikesTime = [];
 var YoutubeDislikesArray = [];
-// var ViewsObj = {x: YoutubeViewsTime, y: YoutubeViews}
 var scatterChartData = {
     datasets: [{
         label: "Youtube Subscriptors",
@@ -69,6 +67,7 @@ window.onload = function() {
               },
             title: {
                 display: true,
+                fontSize: 20,
                 text: 'Youtube Stats - Daily'
             },
             legend: {
@@ -172,6 +171,7 @@ document.getElementById('dailyData').addEventListener('click', function() {
             },
           title: {
               display: true,
+              fontSize: 20,
               text: 'Youtube Stats - Daily'
           },
           legend: {
@@ -267,6 +267,7 @@ document.getElementById('weeklyData').addEventListener('click', function() {
             },
           title: {
               display: true,
+              fontSize: 20,
               text: 'Youtube Stats - Weekly'
           },
           legend: {
